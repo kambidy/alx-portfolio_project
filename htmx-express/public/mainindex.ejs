@@ -59,11 +59,31 @@
   <!-- ======= Hero Section ======= -->
 
   </section><!-- End Hero -->
-
-  <main id="main">
+    <h1>Search Page</h1>
+    <form hx-post="/search" hx-target="#main" hx-swap="innerHTML" method="post">
+      <input type="text" name="query" id="query" placeholder="Enter your search query">
+      <button type="submit">Search</button>
+    </form>
   <section  class="d-flex flex-column justify-content-center">
+  <main id="main">
+
+    <div id ="mainbody">
     <div class="container" data-aos="zoom-in" data-aos-delay="100">
-      
+      <ul>
+        <% for (let animes in anime.data) {%>
+            
+        <div class="card">
+            <a href="" target="_blank">
+                <img 
+                src=<%= anime.data[animes].entry.images.webp.image_url%>
+                    
+                />
+                <h3><%= anime.data[animes].entry.title%></h3>
+            </a>
+        </div>
+        <%}%>
+        
+        </ul>  
       </div>
     </div>
    

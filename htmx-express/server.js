@@ -35,12 +35,60 @@ app.post('/resume', (req, res) => {
   res.render('resume')
 
 })
-app.get('/main', (req, res) => {
+app.get('/main', async(req, res) => {
 
+  const apiUrl = 'https://api.jikan.moe/v4/anime/1/recommendations';
 
-	res.render('mainindex')
+  try {
+  // Fetch data from the API
+  const response = await fetch(apiUrl);
   
-  })
+  // Check if the response is ok (status 200-299)
+  if (!response.ok) {
+    throw new Error('Network response was not ok ' + response.statusText);
+  }
+
+  // Convert the JSON response into a JavaScript object
+  const data = await response.json();
+  console.log(data.data[0])
+  res.render('mainindex',{ anime: data})
+  // Send the data as a JSON response
+} catch (error) {
+  console.error('There has been a problem with your fetch operation:', error);
+  res.status(500).send('An error occurred while fetching data');
+}
+	//res.render('mainindex')
+  
+})
+
+app.post('/search', async(req, res) => {
+  const {query} = req.body;
+  console.log(query)
+  const apiUrl = `https://api.jikan.moe/v4/anime?q= ${query}`
+
+  try {
+  // Fetch data from the API
+  const response = await fetch(apiUrl);
+  
+  // Check if the response is ok (status 200-299)
+  if (!response.ok) {
+    throw new Error('Network response was not ok ' + response.statusText);
+  }
+
+  // Convert the JSON response into a JavaScript object
+  const data = await response.json();
+  console.log(data.data[0])
+  res.render('card', { anime: data})
+  // Send the data as a JSON response
+} catch (error) {
+  console.error('There has been a problem with your fetch operation:', error);
+  res.status(500).send('An error occurred while fetching data');
+}
+  // Process the search query (e.g., query the database)
+  //res.send(`You searched for: ${query}`);
+});
+
+
 app.post('/portfolio', (req, res) => {
 
 
@@ -72,17 +120,12 @@ app.post('/hello', (req, res) => {
 app.post('/about', async(req, res) => {
 	
 		const search_query = "naruto";
-		let animelist = {}
+	
 
-		/*const HandleSearch = async () => {
-			re = await fetch(`https://api.jikan.moe/v4/anime?q=naruto`)
-			console.log(re)
-			animelist = JSON.parse(re)
-			search_query.value = "";
-		}*/
+
 		const apiUrl = 'https://api.jikan.moe/v4/anime?q=naruto';
 
-  try {
+    try {
     // Fetch data from the API
     const response = await fetch(apiUrl);
     
@@ -93,8 +136,8 @@ app.post('/about', async(req, res) => {
 
     // Convert the JSON response into a JavaScript object
     const data = await response.json();
-  console.log(data.data[0])
-res.render('about',{ anime: data})
+    console.log(data.data[0])
+    res.render('about',{ anime: data})
     // Send the data as a JSON response
   } catch (error) {
     console.error('There has been a problem with your fetch operation:', error);
@@ -105,10 +148,29 @@ res.render('about',{ anime: data})
   
 
 })
-app.post('/services', (req, res) => {
+app.post('/services', async(req, res) => {
   
+  const apiUrl = 'https://api.jikan.moe/v4/anime?q=naruto';
+
+  try {
+  // Fetch data from the API
+  const response = await fetch(apiUrl);
   
-    res.render('card')
+  // Check if the response is ok (status 200-299)
+  if (!response.ok) {
+    throw new Error('Network response was not ok ' + response.statusText);
+  }
+
+  // Convert the JSON response into a JavaScript object
+  const data = await response.json();
+  console.log(data.data[0])
+  res.render('card', { anime: data})
+  // Send the data as a JSON response
+} catch (error) {
+  console.error('There has been a problem with your fetch operation:', error);
+  res.status(500).send('An error occurred while fetching data');
+}
+
 })
 app.post('/p-form', (req, res) => {
 	const {name, email} = req.body;

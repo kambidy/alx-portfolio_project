@@ -1,12 +1,18 @@
+<ul>
+<% for (let animes in anime.data) {%>
+    
 <div class="card">
     <a href="" target="_blank">
         <img 
-            src= 
+        src=<%= anime.data[animes].images.webp.image_url%>
             
         />
-        <h3>anime title</h3>
+        <h3><%= anime.data[animes].title%></h3>
     </a>
 </div>
+<%}%>
+
+</ul>
 <style>
     .card {
         flex: 1 1 33%;
