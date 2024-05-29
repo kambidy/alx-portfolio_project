@@ -1,0 +1,24 @@
+{
+  "name": "htmx-express",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "touch ryan.db && rm ryan.db && node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "express-htmx": "^0.0.2",
+    "htmx": "^0.0.2",
+    "node-fetch": "^3.3.2",
+    "pug": "^3.0.3",
+    "sqlite3": "^5.1.7",
+    "wibuapi": "^2.0.2"
+  }
+}
