@@ -2,32 +2,32 @@
     <div class="container" data-aos="fade-up">
   
       <div class="section-title">
-        <h2><%= anime.data[id].title %></h2>
+        <h2><%= anime.data.title %></h2>
 		<h3><%=anime.title%></h3>
-        <p><%= anime.data[id].synopsis %></p>
+        <p><%= anime.data.synopsis %></p>
       </div>
   
       <div class="row">
         <div class="col-lg-4">
           
-          <img src=<%= anime.data[id].images.webp.image_url%> ,class="img-fluid" alt="">
+          <img src=<%= anime.data.images.webp.image_url%> ,class="img-fluid" alt="">
         </div>
         <div class="col-lg-8 pt-4 pt-lg-0 content">
           <h3>Backgound</h3>
           <p class="fst-italic">
-            <%= anime.data[id].background %>
+            <%= anime.data.background %>
           </p>
           <div class="row">
             <div class="col-lg-6">
               <ul>
-                <li><i class="bi bi-chevron-right"></i> <strong>Aired from:</strong> <span><%= anime.data[id].aired.prop.from.year %></span></li>
+                <li><i class="bi bi-chevron-right"></i> <strong>Aired from:</strong> <span><%= anime.data.aired.prop.from.year %></span></li>
                 <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong> <span>www.example.com</span></li>
               </ul>
             </div>
             <div class="col-lg-6">
               <ul>
                 <li><i class="bi bi-chevron-right"></i> <strong>Episodes:</strong> <span><%= ep %></span></li>
-                <li><i class="bi bi-chevron-right"></i> <strong>season:</strong> <span><%= anime.data[id].season %></span></li>
+                <li><i class="bi bi-chevron-right"></i> <strong>season:</strong> <span><%= anime.data.season %></span></li>
 
               </ul>
             </div>
@@ -52,7 +52,7 @@
   <div class="container text-center">
     <div class="row-20 gx-5">
       <div class="col-20 gx-5 ">
-  <% for (let i = 0; i < anime.data[id].episodes +1; i++) { %>
+  <% for (let i = 0; i < anime.data.episodes +1; i++) { %>
 
 
     <button href="#about" class="btn btn-light"  hx-target="#nn" hx-swap="innerHTML" hx-post=<%="/watched/"+i%>><i></i> <span><%= i%></span></button>

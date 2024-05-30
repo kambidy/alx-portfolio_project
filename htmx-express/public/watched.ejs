@@ -1,0 +1,7 @@
+<ul>
+    <% watched.forEach(user => { %>
+        <button type="button" class="btn btn-primary">
+            Watched ep <span class="badge text-bg-secondary"><%= user.episodeWatched %></span>
+          </button>
+    <% }); %>
+  </ul>

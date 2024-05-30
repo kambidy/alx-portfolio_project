@@ -46,7 +46,7 @@
 
     <nav id="navbar" class="navbar nav-menu">
       <ul>
-        <li><a href="#about"class="nav-link scrollto"class="bx bx-user" hx-target="#main" hx-post="/about" hx-swap="innerHTML"><i></i> <span>About</span></a></li>
+        <li><a href="main"class="nav-link scrollto"class="bx bx-user" ><i></i> <span>About</span></a></li>
         <li><a href="#resume" class="nav-link scrollto" hx-target="#main" hx-post="/resume" hx-swap="innerHTML"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
         <li><a href="#portfolio" class="nav-link scrollto" hx-target="#main" hx-post="/portfolio" hx-swap="innerHTML"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
         <li><a href="#services" class="nav-link scrollto" hx-target="#main" hx-post="services" hx-swap="innerHTML"><i class="bx bx-server"></i> <span>Services</span></a></li>
@@ -59,10 +59,15 @@
   <!-- ======= Hero Section ======= -->
 
   </section><!-- End Hero -->
-    <h1>Search Page</h1>
-    <form hx-post="/search" hx-target="#main" hx-swap="innerHTML" method="post">
-      <input type="text" name="query" id="query" placeholder="Enter your search query">
-      <button type="submit">Search</button>
+   
+   <form class="row g-3" hx-post="/search" hx-target="#main" hx-swap="innerHTML" method="post">
+      <div class="col-auto">
+        <label for="inputPassword2" class="visually-hidden">Password</label>
+        <input type="text" class="form-control" id="inputPassword2" placeholder="enter anime" name="query">
+      </div>
+      <div class="col-auto">
+        <button type="submit" class="btn btn-primary mb-3">Search</button>
+      </div>
     </form>
   <section  class="d-flex flex-column justify-content-center">
   <main id="main">
@@ -70,18 +75,25 @@
     <div id ="mainbody">
     <div class="container" data-aos="zoom-in" data-aos-delay="100">
       <ul>
+        <div class="container">
+        
+          <div class="row">
         <% for (let animes in anime.data) {%>
             
-        <div class="card">
-            <a href="" target="_blank">
-                <img 
-                src=<%= anime.data[animes].entry.images.webp.image_url%>
-                    
-                />
-                <h3><%= anime.data[animes].entry.title%></h3>
-            </a>
-        </div>
+        <div class="card" style="width: 18rem;">
+          <a hx-post=<%="/mainSearch/"+anime.data[animes].entry.mal_id%> hx-target="body">
+              <img 
+              src=<%= anime.data[animes].entry.images.webp.large_image_url%> class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title"><%= anime.data[animes].entry.title%></h5>
+            
+          </div>
+      </a> 
+          </div>
         <%}%>
+          </div>
+          </div>
+
         
         </ul>  
       </div>
