@@ -1,6 +1,6 @@
 # This is a Anime management Application in node JS
 
-!["TODO"](ArcoLinux-2024-05-31-1717160958_screenshot_1366x768.jpg)
+!["ANIME MAERKER"](![Alt text](![Alt text](ArcoLinux_2024-05-31_16-19-00.jpg))
 
 - Type the following command in the terminal
 
