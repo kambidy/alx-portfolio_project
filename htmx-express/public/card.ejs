@@ -1,3 +1,4 @@
+<main>
 <ul>
     <div class="container">
         
@@ -7,7 +8,7 @@
 
    
 <div class="card" style="width: 18rem;">
-    <a hx-post=<%="/about/"+animes%> hx-target="body">
+    <a hx-post=<%="/about/"+animes%> hx-target="main">
         <img 
         src=<%= anime.data[animes].images.webp.large_image_url%> class="card-img-top" alt="...">
     <div class="card-body">
@@ -21,6 +22,6 @@
         </div>
     </div>
 </ul>
-
+</main>
 
 

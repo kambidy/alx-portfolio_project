@@ -44,7 +44,7 @@ db.serialize(() => {
 
 });
 db.serialize(() => {
-  db.run("CREATE TABLE animemark (id INTEGER PRIMARY KEY AUTOINCREMENT,name TEXT,episodeWatched int)");
+  db.run("CREATE TABLE animemark (id INTEGER PRIMARY KEY AUTOINCREMENT,name TEXT,episodeWatched int,watchedId int)");
 
 
 });
@@ -79,6 +79,7 @@ app.get('/main', async(req, res) => {
 	//res.render('mainindex')
   
 })
+
 
 app.post('/mainSearch/:id', async(req, res) => {
   const clickId = parseInt(req.params.id, 10);

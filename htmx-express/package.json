@@ -17,7 +17,6 @@
     "express-htmx": "^0.0.2",
     "htmx": "^0.0.2",
     "node-fetch": "^3.3.2",
-    "pug": "^3.0.3",
     "sqlite3": "^5.1.7",
     "wibuapi": "^2.0.2"
   }

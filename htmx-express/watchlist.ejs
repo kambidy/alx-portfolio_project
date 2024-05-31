@@ -5,11 +5,12 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Anime marker</title>
+  <title>MyResume Bootstrap Template - Index</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
@@ -39,27 +40,64 @@
 
   <!-- ======= Mobile nav toggle button ======= -->
   <!-- <button type="button" class="mobile-nav-toggle d-xl-none"><i class="bi bi-list mobile-nav-toggle"></i></button> -->
+  <i class="bi bi-list mobile-nav-toggle d-lg-none"></i>
   <!-- ======= Header ======= -->
-  <!-- End Header -->
+  <header id="header" class="d-flex flex-column justify-content-center">
+
+    <nav id="navbar" class="navbar nav-menu">
+      <ul>
+        <li><a href="main"class="nav-link scrollto"class="bx bx-user" ><i></i> <span>About</span></a></li>
+        <li><a href="#resume" class="nav-link scrollto" hx-target="#main" hx-post="/resume" hx-swap="innerHTML"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
+        <li><a href="#portfolio" class="nav-link scrollto" hx-target="#main" hx-post="/portfolio" hx-swap="innerHTML"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
+        <li><a href="#services" class="nav-link scrollto" hx-target="#main" hx-post="services" hx-swap="innerHTML"><i class="bx bx-server"></i> <span>Services</span></a></li>
+        <li><a href="#contact" class="nav-link scrollto" hx-target="#main" hx-post="contact" hx-swap="innerHTML"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
+      </ul>
+    </nav><!-- .nav-menu -->
+
+  </header><!-- End Header -->
 
   <!-- ======= Hero Section ======= -->
 
   </section><!-- End Hero -->
-
-  <main id="maincontent">
-  <section id="hero" class="d-flex flex-column justify-content-center">
-    <div class="container" data-aos="zoom-in" data-aos-delay="100">
-      <h1>Anime Marker</h1>
-      <p>Track your <span class="typed" data-typed-items="Anime, Manga, Manhwa, Light Novels"></span></p>
-      <div class="social-links">
-        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+   <div>
+   <form class="row g-3" hx-post="/search" hx-target="#main" hx-swap="innerHTML" method="post">
+      <div class="col-auto">
+        <label for="inputPassword2" class="visually-hidden">Password</label>
+        <input type="text" class="form-control" id="inputPassword2" placeholder="enter anime" name="query">
       </div>
-      <div id="navbar" class="navbar nav-menu">
-        <a href="main" class="btn btn-outline-primary"><i></i> <span>GO</span></a>
+      <div class="col-auto">
+        <button type="submit" class="btn btn-primary mb-3">Search</button>
+      </div>
+    </form>
+  <section  class="d-flex flex-column justify-content-center">
+
+  </div>
+  <main id="main">
+
+    <div id ="mainbody">
+    <div class="container" data-aos="zoom-in" data-aos-delay="100">
+      <ul>
+        <div class="container">
+        
+          <div class="row">
+        <% for (let animes in anime.data) {%>
+            
+        <div class="card" style="width: 18rem;">
+          <a hx-post=<%="/mainSearch/"+anime.data[animes].entry.mal_id%> hx-target="body">
+              <img 
+              src=<%= anime.data[animes].entry.images.webp.large_image_url%> class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title"><%= anime.data[animes].entry.title%></h5>
+            
+          </div>
+      </a> 
+          </div>
+        <%}%>
+          </div>
+          </div>
+
+        
+        </ul>  
       </div>
     </div>
    
