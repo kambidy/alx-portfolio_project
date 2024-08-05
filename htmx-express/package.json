@@ -4,7 +4,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "touch ryan.db && rm ryan.db && node server.js"
+    "start": "touch ryan.db && node server.js"
   },
   "keywords": [],
   "author": "",
